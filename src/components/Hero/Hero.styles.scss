@@ -2,3 +2,9 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 2)),
 		url("../../assets/ben-white-unsplash.jpg") center/cover no-repeat;
 }
+
+@media (min-width: 1024px) {
+	.hero-image {
+		font-size: 1.5rem;
+	}
+}
