@@ -1,7 +1,7 @@
 import React from "react";
 import "./FeaturedProduct.styles.scss";
 
-export default function FeaturedProduct(product) {
+export default function FeaturedProduct({ product }) {
 	const { title, imageUrl, price } = product;
 	return (
 		<div className="featured-product">

@@ -31,10 +31,15 @@ img {
 .featured-collection {
 	margin-top: 6rem;
 
-	.featured-section-title {
+	.featured-collection-title {
 		font-size: 2rem;
+		text-align: center;
 	}
 
+	.featured-product {
+		width: 60%;
+		margin: 1rem auto;
+	}
 	.featured-image {
 		cursor: pointer;
 	}

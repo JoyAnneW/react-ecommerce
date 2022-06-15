@@ -6,3 +6,8 @@ react router v6: useNavigate instead of history to programmatically move a user 
 
 context - makes the value of the provider available for use by any of its children
 - when you want to use the context you creaed, use useContext
+
+the layout component wraps all components so that the header and footer appear with all those components. this can make it easy to remove these elements when we don't want them. 
+
+the asterisk indicates that the route points to any other path than the ones we've defined in our app.
+			<Route path="*" element={<NotFound />} />

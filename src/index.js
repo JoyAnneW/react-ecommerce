@@ -8,11 +8,11 @@ import ProductsContextProvider from "./context/products-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<ProductsContextProvider>
-		<BrowserRouter>
+	<BrowserRouter>
+		<ProductsContextProvider>
 			<App />
-		</BrowserRouter>{" "}
-	</ProductsContextProvider>
+		</ProductsContextProvider>
+	</BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

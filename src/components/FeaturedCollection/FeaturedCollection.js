@@ -4,19 +4,18 @@ import FeaturedProduct from "../shared/FeaturedProduct";
 
 export default function FeaturedCollection() {
 	const { products } = useContext(ProductsContext);
-	console.log({ products });
-	console.log(ProductsContext);
 
 	// get only the first 4 products and return
 	const productItems = products
 		.filter((product, index) => index < 4)
 		.map((product) => {
-			<FeaturedProduct key={product.id} product={product} />;
+			return <FeaturedProduct key={product.id} product={product} />;
 		});
 
+	console.log(productItems);
 	return (
-		<div className="featured-collection-container">
-			<h2 className="featured-collection-title">FeaturedCollection</h2>
+		<div className="featured-collection container">
+			<h2 className="featured-collection-title">Featured Collection</h2>
 			<div className="products">{productItems}</div>
 		</div>
 	);
