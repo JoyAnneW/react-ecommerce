@@ -1,9 +1,10 @@
 import React from "react";
 import "./MainSection.styles.scss";
-import { withRouter } from "react-router-dom";
-import studioBag from "../../assets/studio-bag";
+import { useNavigate } from "react-router-dom";
+import studioBag from "../../assets/studio-bag.png";
 
 export default function MainSection({ history }) {
+	const navigate = useNavigate();
 	return (
 		<div className="main-section-container">
 			<div className="main-section-middle">
@@ -19,7 +20,14 @@ export default function MainSection({ history }) {
 						between, each NOMAD piece is thoughtfully created to be the perfect
 						balance of form and function.
 					</p>
-					<button className="button is-black" id="shop-now"></button>
+					<button
+						className="button is-black"
+						id="shop-now"
+						// this will navigate to the product view page of product #1. Need to be able to pass an id here.
+						onClick={() => navigate("/product/1")}
+					>
+						STUDIO BAG
+					</button>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,34 @@
+.main-section-container {
+	width: 70%;
+	margin: 3rem auto;
+
+	h2 {
+		font-size: 1.1rem;
+	}
+
+	.middle-description {
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
+	@media (min-width: 1024px) {
+		.main-section-middle {
+			display: flex;
+			justify-content: space-between;
+
+			.middle-image {
+				max-width: 545px;
+				flex: 1 0 545px;
+			}
+
+			.middle-description {
+				margin-left: 30px;
+				align-self: center;
+
+				p {
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+}

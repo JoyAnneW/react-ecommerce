@@ -1,0 +1,5 @@
+remove strictmode from index.js because using useReducer Hook.
+strictmode calls the action creators twice and this creates a bug in development mode.
+wrapp App component in BrowserRouter in index.js
+
+react router v6: useNavigate instead of history to programmatically move a user to another page.
