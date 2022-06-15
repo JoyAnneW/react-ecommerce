@@ -4,7 +4,7 @@ import FeaturedProduct from "../../shared/FeaturedProduct";
 import { ProductsContext } from "../../../context/products-context";
 import "./shop.styles.scss";
 
-const Shop = () => {
+export default function Shop() {
 	const { products } = useContext(ProductsContext);
 	const allProducts = products.map((product) => (
 		<FeaturedProduct {...product} key={product.id} />
@@ -18,4 +18,4 @@ const Shop = () => {
 			</div>
 		</Layout>
 	);
-};
+}
