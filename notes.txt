@@ -3,3 +3,5 @@ strictmode calls the action creators twice and this creates a bug in development
 wrapp App component in BrowserRouter in index.js
 
 react router v6: useNavigate instead of history to programmatically move a user to another page.
+
+context - makes the value of the provider available for use by any of its children

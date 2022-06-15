@@ -5,6 +5,7 @@ import studioBag from "../../assets/studio-bag.png";
 
 export default function MainSection({ history }) {
 	const navigate = useNavigate();
+
 	return (
 		<div className="main-section-container">
 			<div className="main-section-middle">
