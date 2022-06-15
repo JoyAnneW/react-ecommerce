@@ -6,6 +6,7 @@ import "./Shop.styles.scss";
 
 export default function Shop() {
 	const { products } = useContext(ProductsContext);
+
 	const allProducts = products.map((product) => (
 		<FeaturedProduct product={product} key={product.id} />
 	));
