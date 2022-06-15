@@ -11,3 +11,6 @@ the layout component wraps all components so that the header and footer appear w
 
 the asterisk indicates that the route points to any other path than the ones we've defined in our app.
 			<Route path="*" element={<NotFound />} />
+
+  Get the id param from the URL. so that I can use it in my route path
+	const { id } = useParams();

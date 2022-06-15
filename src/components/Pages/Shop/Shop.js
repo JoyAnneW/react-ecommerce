@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import Layout from "../../shared/Layout";
 import FeaturedProduct from "../../shared/FeaturedProduct";
 import { ProductsContext } from "../../../context/products-context";
-import "./shop.styles.scss";
+import "./Shop.styles.scss";
 
 export default function Shop() {
 	const { products } = useContext(ProductsContext);
 	const allProducts = products.map((product) => (
-		<FeaturedProduct {...product} key={product.id} />
+		<FeaturedProduct product={product} key={product.id} />
 	));
 
 	return (
