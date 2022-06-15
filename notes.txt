@@ -14,3 +14,5 @@ the asterisk indicates that the route points to any other path than the ones we'
 
   Get the id param from the URL. so that I can use it in my route path
 	const { id } = useParams();
+
+  need a context for cart, products
