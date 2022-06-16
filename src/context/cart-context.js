@@ -1,9 +1,18 @@
 import React, { createContext, useReducer } from "react";
 import cartReducer from "./cart-reducer";
+import { sumItems } from "./cart-reducer";
 
 export const CartContext = createContext();
+const cartFromStorage = localStorage.getItem("cart")
+	? JSON.parse(localStorage.getItem("cart"))
+	: [];
 
-const initialState = { cartItems: [], itemCount: 0, total: 0 };
+// const initialState = { cartItems: [], itemCount: 0, total: 0 };
+// insteaf of hardcoding the initial state. we are getting it from localstorage. if there's nothing in the cart the initial state is effectively the same as above
+const initialState = {
+	cartItems: cartFromStorage,
+	...sumItems(cartFromStorage),
+};
 
 const CartContextProvider = ({ children }) => {
 	// dispatch function is used to add to, remove from cart EventCounts. it will run the action through the cartreducer

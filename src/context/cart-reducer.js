@@ -1,5 +1,13 @@
+// for persisting cartitems in localstorage
+const storeCartItems = (cartItems) => {
+	// if cartItems.length is greater than 0, then cart is equal to whatever is passed in as cartItems. if Notification, cart is equal to an empty array
+	const cart = cartItems.length > 0 ? cartItems : [];
+	localStorage.setItem("cart", JSON.stringify(cart));
+};
+
 // helper function to add up quantities and totals
 export const sumItems = (cartItems) => {
+	storeCartItems(cartItems);
 	return {
 		// this is going to be the total of all of the quantities of each object in array
 		itemCount: cartItems.reduce((total, product) => {
@@ -78,6 +86,8 @@ const cartReducer = (state, action) => {
 			};
 		// return everything to initial state
 		case "CLEAR":
+			// clear localstorage when user clears cart
+			localStorage.removeItem("cart");
 			return {
 				cartItems: [],
 				itemCount: 0,
