@@ -7,12 +7,21 @@ import { BrowserRouter } from "react-router-dom";
 import ProductsContextProvider from "./context/products-context";
 import CartContextProvider from "./context/cart-context";
 
+// INITIALIZING STRIPE
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.PUBLIC_KEY);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<BrowserRouter>
 		<ProductsContextProvider>
 			<CartContextProvider>
-				<App />
+				{/* now the stripePromise exists in anywhere in our App. */}
+				<Elements stripe={stripePromise}>
+					<App />
+				</Elements>
 			</CartContextProvider>
 		</ProductsContextProvider>
 	</BrowserRouter>
