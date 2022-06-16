@@ -33,7 +33,11 @@ const createCheckoutSession = async (req, res) => {
 		});
 
 		// only the sessionID is needed on frontend to redirect buyer to success page. don't send back the entire session object for security reasons.
-		res.status(200).json({ sessionID: session.id });
+		res.status(200).json({ sessionId: session.id });
+		// if successful, i'll get this obj from stripe:
+		// {
+		// 	"sessionId": "cs_test_a1XEkjGc5n2B1vDgwO1y96l1tUauuI2Q0BAyLbLEUhW3tBjHQcYMnTj4bI"
+		// }
 	} catch (error) {
 		console.log(error);
 		res
