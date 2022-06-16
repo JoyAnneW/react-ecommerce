@@ -11,14 +11,16 @@ import CartContextProvider from "./context/cart-context";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(process.env.PUBLIC_KEY);
+const stripePromise = loadStripe(
+	"pk_test_51LAYVvGbLCDl0eiJEzT9xpggaROyBJ0LwQJ2Mh9902UyAE1IoYfPQdzczFYQkF17nKp99WXHqvgDAYnLwrL3yiC000AywInfzE"
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<BrowserRouter>
 		<ProductsContextProvider>
 			<CartContextProvider>
-				{/* now the stripePromise exists in anywhere in our App. */}
+				{/* now the Stripe object can be accessed anywhere in our App. */}
 				<Elements stripe={stripePromise}>
 					<App />
 				</Elements>
