@@ -17,26 +17,26 @@ const createCheckoutSession = async (req, res) => {
 	}
 
 	// creating session
-	let session;
 	try {
 		// call to stripe api to create session
-		session = await stripeAPI.checkout.sessions.create({
+		const session = await stripeAPI.checkout.sessions.create({
 			payment_method_types: ["card"],
 			mode: "payment",
 			// these are destructured from reqbody and using es6 computed property name syntax
 			line_items,
 			customer_email,
-			// need these routes in front end. customer will be redirected to /success on successful payment. query params used from ?
+			// need these routes in front end. customer will be redirected to /success on successful payment. query params used from ?. this is for customization.
 			success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-			cancel_url: `${domainUrl}/cancel`,
+			cancel_url: `${domainUrl}/canceled`,
 			shipping_address_collection: { allowed_countries: ["NL", "US"] },
 		});
 
-		// only the sessionID is needed on frontend to redirect buyer to success page. don't send back the entire session object for security reasons.
+		console.log(session);
+		// only the sessionID is needed on frontend to redirect buyer to success page. don't send back the entire session object for security reasons. this is for customization
 		res.status(200).json({ sessionId: session.id });
 		// if successful, i'll get this obj from stripe:
 		// {
-		// 	"sessionId": "cs_test_a1XEkjGc5n2B1vDgwO1y96l1tUauuI2Q0BAyLbLEUhW3tBjHQcYMnTj4bI"
+		// 	"sessionId": "cs_test_a1XEkjG...."
 		// }
 	} catch (error) {
 		console.log(error);
