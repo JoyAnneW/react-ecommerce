@@ -5,7 +5,8 @@ import "./Cart.styles.scss";
 
 export default function Cart() {
 	// part of the initial state object in cart-context
-	const { itemCount } = useContext(CartContext);
+	const { itemCount, cartItems } = useContext(CartContext);
+	console.log({ cartItems });
 	return (
 		<div className="cart-container">
 			<AiOutlineShopping />

@@ -1,5 +1,4 @@
 // helper function to add up quantities and totals
-
 export const sumItems = (cartItems) => {
 	return {
 		// this is going to be the total of all of the quantities of each object in array
@@ -30,6 +29,24 @@ const cartReducer = (state, action) => {
 				cartItems: [...state.cartItems],
 				...sumItems(state.cartItems),
 			};
+
+		case "INCREASE":
+			// this will loop over cartitems and return the index of the item that has the same id as payload.id, which is the product we pass to the increase fn
+			const increaseIndex = state.cartItems.findIndex(
+				(item) => item.id === action.payload.id
+			);
+
+			// get the item that needs increasing from the cartitems array and increement the quantity property. this mutates cartitems so we need to spread out the updated state of the cart in the return statement
+			state.cartItems[increaseIndex].quantity++;
+
+			// return a new state with the changes.
+			return {
+				...state,
+				cartItems: [...state.cartItems],
+				// this will sum up the totals and quantities in the cart. sumItems returns an object, which we are spreading out in the return object of this case
+				...sumItems(state.cartItems),
+			};
+
 		default:
 			return state;
 	}

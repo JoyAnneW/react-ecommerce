@@ -1,11 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "../../context/products-context";
+import { CartContext } from "../../context/cart-context";
+import { isInCart } from "../../helpers";
 import { useParams, useNavigate } from "react-router-dom";
 import Layout from "../shared/Layout";
 import "./SingleProduct.styles.scss";
 
 export default function SingleProduct() {
 	const { products } = useContext(ProductsContext);
+	const { addProduct, cartItems, increase } = useContext(CartContext);
 	const navigate = useNavigate();
 	const [product, setProduct] = useState(null);
 
@@ -31,8 +34,9 @@ export default function SingleProduct() {
 	if (!product) {
 		return null;
 	}
+	// this needs to be the last thing executed
 	const { imageUrl, title, price, description } = product;
-	const itemInCart = true;
+
 	return (
 		<Layout>
 			<div className="single-product-container">
@@ -45,22 +49,21 @@ export default function SingleProduct() {
 						<p>{price}</p>
 					</div>
 					<div className="add-to-cart-btns">
-						{!itemInCart && (
+						{/*if item is in the cart, display ADD MORE, if not, display Add to cart */}
+						{isInCart(product, cartItems) ? (
 							<button
 								className="button is-white nomad-btn"
 								id="btn-white-outline"
-								// onClick={() => addProduct(product)}
-							>
-								ADD TO CART
-							</button>
-						)}
-						{itemInCart && (
-							<button
-								className="button is-white nomad-btn"
-								id="btn-white-outline"
-								// onClick={() => increase(product)}
+								onClick={() => increase(product)}
 							>
 								ADD MORE
+							</button>
+						) : (
+							<button
+								className="button is-black nomad-btn"
+								onClick={() => addProduct(product)}
+							>
+								ADD TO CART
 							</button>
 						)}
 
