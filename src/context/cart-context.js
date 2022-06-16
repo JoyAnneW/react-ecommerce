@@ -24,12 +24,19 @@ const CartContextProvider = ({ children }) => {
 		// dispatch the fn that decreases
 		dispatch({ type: "DECREASE", payload: product });
 
+	const removeProduct = (product) =>
+		dispatch({ type: "REMOVE_ITEM", payload: product });
+
+	const clearCart = () => dispatch({ type: "CLEAR" });
+
 	// any component that is wrapped by this context can access these values.
 	const contextValues = {
 		...state,
 		addProduct,
 		increase,
 		decrease,
+		removeProduct,
+		clearCart,
 	};
 	return (
 		// here I don't need the double braces in value because contextValues is itself an object

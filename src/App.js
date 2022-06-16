@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Shop from "./components/Pages/Shop/Shop";
 import SingleProduct from "./components/SingleProduct/SingleProduct";
+import CartPage from "./components/Pages/CartPage/CartPage";
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 			<Routes>
 				<Route exact path="/" element={<HomePage />} />
 				<Route path="/shop" element={<Shop />} />
+				<Route path="/cart" element={<CartPage />} />
 				<Route path="/product/:id" element={<SingleProduct />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
